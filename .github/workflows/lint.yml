@@ -1,0 +1,17 @@
+name: Python Code Scanning
+
+on: [push]
+
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Analizar calidad del codigo con PyLint
+        uses: advanced-security/python-lint-code-scanning-action@v1
+        with:
+          linter: pylint
